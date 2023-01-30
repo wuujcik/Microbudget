@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Micro budget</string>
+    <string name="content_description_add">Add new item</string>
+    <string name="purpose_label">Purpose</string>
+    <string name="amount_label">Amount</string>
+    <string name="back">Back</string>
+    <string name="details">Details</string>
+    <string name="save">Save</string>
+    <string name="empty_list_of_spendings">No spendings so far…</string>
+</resources>
