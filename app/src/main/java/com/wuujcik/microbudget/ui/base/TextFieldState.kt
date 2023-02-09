@@ -22,10 +22,11 @@ import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.setValue
 
 open class TextFieldState(
+    originalText: String? = null,
     private val validator: (String) -> Boolean = { true },
     private val errorFor: (String) -> String = { "" }
 ) {
-    var text: String by mutableStateOf("")
+    var text: String by mutableStateOf(originalText ?: "")
     // was the TextField ever focused
     var isFocusedDirty: Boolean by mutableStateOf(false)
     var isFocused: Boolean by mutableStateOf(false)

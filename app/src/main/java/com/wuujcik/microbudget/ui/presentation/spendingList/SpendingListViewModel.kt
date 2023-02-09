@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wuujcik.data.entities.Spending
 import com.wuujcik.domain.repository.SpendingsRepository
+import com.wuujcik.microbudget.R
 import com.wuujcik.microbudget.ui.Screen
+import com.wuujcik.microbudget.ui.presentation.itemDetail.ItemDetailFragmentArgs
 import com.wuujcik.microbudget.util.Event
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,11 +35,16 @@ class SpendingListViewModel(
     }
 
     fun addNew() {
-        _navigateTo.value = Event(Screen.ItemDetail)
+        _navigateTo.value = Event(Screen(R.id.item_detail_fragment))
     }
 
     fun edit(spending: Spending) {
-        _navigateTo.value = Event(Screen.ItemDetail) // TODO: allow editing
+        _navigateTo.value = Event(
+            Screen(
+                R.id.item_detail_fragment,
+                ItemDetailFragmentArgs(item = spending).toBundle()
+            )
+        )
     }
 
     fun deleteOne(spending: Spending) = viewModelScope.launch {

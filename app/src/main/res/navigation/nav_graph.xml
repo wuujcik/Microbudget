@@ -6,11 +6,17 @@
     <fragment
         android:id="@+id/spending_list_fragment"
         android:name="com.wuujcik.microbudget.ui.presentation.spendingList.SpendingListFragment"
-        android:label="Spending list">
-    </fragment>
+        android:label="Spending list"/>
+
     <fragment
         android:id="@+id/item_detail_fragment"
         android:name="com.wuujcik.microbudget.ui.presentation.itemDetail.ItemDetailFragment"
         android:label="Item detail">
+        <argument
+            android:name="item"
+            android:defaultValue="@null"
+            app:argType="com.wuujcik.data.entities.Spending"
+            app:nullable="true" />
     </fragment>
+
 </navigation>

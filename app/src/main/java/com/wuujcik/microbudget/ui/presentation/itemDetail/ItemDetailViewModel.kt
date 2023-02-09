@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.wuujcik.data.entities.Currency
 import com.wuujcik.data.entities.Spending
 import com.wuujcik.domain.repository.SpendingsRepository
+import com.wuujcik.microbudget.R
 import com.wuujcik.microbudget.ui.Screen
 import com.wuujcik.microbudget.util.Event
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ class ItemDetailViewModel(
     val navigateTo: LiveData<Event<Screen>>
         get() = _navigateTo
 
-    private val _chosenDate = mutableStateOf<ZonedDateTime>(ZonedDateTime.now())
+    private val _chosenDate = mutableStateOf<ZonedDateTime>(originalItem?.date ?: ZonedDateTime.now())
     val chosenDate: ZonedDateTime
         get() = _chosenDate.value
 
@@ -30,7 +31,7 @@ class ItemDetailViewModel(
 
     fun onSaveClicked(spending: Spending) = viewModelScope.launch {
         spendingsRepository.insertOrUpdate(spending)
-        _navigateTo.value = Event(Screen.SpendingList)
+        _navigateTo.value = Event(Screen(R.id.spending_list_fragment))
     }
 
     fun onDateChosen(date: ZonedDateTime?) {

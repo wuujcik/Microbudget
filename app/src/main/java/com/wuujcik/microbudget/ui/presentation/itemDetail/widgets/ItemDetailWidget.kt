@@ -25,7 +25,7 @@ import java.time.ZonedDateTime
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemDetailWidget(
-    originalItem: Spending? = null,  // TODO: allow editing
+    originalItem: Spending? = null,
     onBackPressed: () -> Unit = {},
     onDateClicked: () -> Unit = {},
     onCurrencyClicked: (Currency) -> Unit = {},
@@ -48,11 +48,11 @@ fun ItemDetailWidget(
                         .padding(contentPadding)
                 ) {
 
-                    val amountState by rememberSaveable(stateSaver = AmountStateSaver) {
-                        mutableStateOf(AmountState())
-                    }
                     val purposeState by rememberSaveable(stateSaver = PurposeStateSaver) {
-                        mutableStateOf(PurposeState())
+                        mutableStateOf(PurposeState(originalText = originalItem?.purpose))
+                    }
+                    val amountState by rememberSaveable(stateSaver = AmountStateSaver) {
+                        mutableStateOf(AmountState(originalText = originalItem?.amount.toString()))
                     }
 
                     Spacer(modifier = Modifier.height(12.dp))
@@ -74,14 +74,18 @@ fun ItemDetailWidget(
                     DatePickerWidget(date = dateTime, onClick = onDateClicked)
                     Spacer(modifier = Modifier.weight(1f))
                     SaveButtonWidget(
+                        spending = getSpending(
+                            originalItem = originalItem,
+                            purposeState = purposeState,
+                            amountState = amountState,
+                            currency = Currency.CZECH,//TODO: allow choosing currency
+                            dateTime = dateTime,
+                        ),
                         onSaveClicked = onSaveClicked,
                         isSaveButtonEnabled = isSaveButtonEnabled(
                             amountState = amountState,
                             purposeState = purposeState
-                        ),
-                        amountState = amountState,
-                        purposeState = purposeState,
-                        date = dateTime,
+                        )
                     )
                 }
             }
@@ -129,6 +133,32 @@ fun ItemDetailTopAppBar(topAppBarText: String, onBackPressed: () -> Unit) {
     )
 }
 
+private fun getSpending(
+    originalItem: Spending? = null,
+    purposeState: TextFieldState,
+    amountState: TextFieldState,
+    currency: Currency,
+    dateTime: ZonedDateTime,
+): Spending? {
+    return if ((amountState.isValid && purposeState.isValid).not()) {
+        null
+    } else if (originalItem?.id != null) {
+        Spending(
+            id = originalItem.id,
+            purpose = purposeState.text,
+            amount = amountState.text.toDouble(), //TODO: validation
+            currency = currency,
+            date = dateTime,
+        )
+    } else {
+        Spending(
+            purpose = purposeState.text,
+            amount = amountState.text.toDouble(), //TODO: validation
+            currency = currency,
+            date = dateTime,
+        )
+    }
+}
 
 private fun isSaveButtonEnabled(
     amountState: TextFieldState,

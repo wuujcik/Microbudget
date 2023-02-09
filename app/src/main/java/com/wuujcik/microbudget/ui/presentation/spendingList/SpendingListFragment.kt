@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.wuujcik.microbudget.R
-import com.wuujcik.microbudget.ui.Screen
-import com.wuujcik.microbudget.ui.navigate
 import com.wuujcik.microbudget.ui.presentation.spendingList.widgets.ListOfSpendingWidget
 import com.wuujcik.microbudget.ui.presentation.spendingList.widgets.SpendingListEvent
 import com.wuujcik.microbudget.ui.theme.MicroBudgetTheme
@@ -24,9 +23,9 @@ class SpendingListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel.navigateTo.observe(viewLifecycleOwner) { navigateToEvent ->
-            navigateToEvent.getContentIfNotHandled()?.let { navigateTo ->
-                navigate(navigateTo, Screen.SpendingList)
+        viewModel.navigateTo.observe(viewLifecycleOwner) { screenEvent ->
+            screenEvent.getContentIfNotHandled()?.let { screen ->
+                findNavController().navigate(screen.fragmentId, screen.args)
             }
         }
 

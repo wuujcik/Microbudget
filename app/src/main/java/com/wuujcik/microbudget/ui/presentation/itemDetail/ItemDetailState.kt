@@ -4,8 +4,13 @@ import com.wuujcik.microbudget.ui.base.TextFieldState
 import com.wuujcik.microbudget.ui.base.textFieldStateSaver
 
 // PURPOSE OF SPENDING
-class PurposeState :
-    TextFieldState(validator = ::isPurposeValid, errorFor = ::purposeValidationError)
+class PurposeState(
+    originalText: String? = null
+) : TextFieldState(
+    originalText = originalText,
+    validator = ::isPurposeValid,
+    errorFor = ::purposeValidationError,
+)
 
 val PurposeStateSaver = textFieldStateSaver(PurposeState())
 
@@ -19,7 +24,13 @@ private fun isPurposeValid(purpose: String?): Boolean {
 
 
 // AMOUNT
-class AmountState : TextFieldState(validator = ::isAmountValid, errorFor = ::amountValidationError)
+class AmountState(
+    originalText: String? = null
+) : TextFieldState(
+    originalText = originalText,
+    validator = ::isAmountValid,
+    errorFor = ::amountValidationError
+)
 
 val AmountStateSaver = textFieldStateSaver(AmountState())
 
