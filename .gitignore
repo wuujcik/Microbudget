@@ -2,6 +2,7 @@
 *.apk
 *.ap_
 .externalNativeBuild
+*.aab
 
 # files for the VM
 *.dex
