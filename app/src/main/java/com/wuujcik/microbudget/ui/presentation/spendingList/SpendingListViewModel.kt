@@ -29,7 +29,7 @@ class SpendingListViewModel(
     init {
         viewModelScope.launch {
             spendingsRepository.getAll().collect { listOfSpending ->
-                _state.value = SpendingListState(listOfSpending = listOfSpending)
+                _state.value = SpendingListState(listOfSpending = listOfSpending.sortedBy { it.date })
             }
         }
     }
