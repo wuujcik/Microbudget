@@ -14,8 +14,8 @@ android {
         applicationId "com.wuujcik.microbudget"
         minSdk 26
         targetSdk 33
-        versionCode 1000101
-        versionName "1.0.1.1"
+        versionCode 1000102
+        versionName "1.0.1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

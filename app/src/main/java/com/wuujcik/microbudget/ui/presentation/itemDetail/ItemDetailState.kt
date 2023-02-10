@@ -1,7 +1,7 @@
 package com.wuujcik.microbudget.ui.presentation.itemDetail
 
-import com.wuujcik.microbudget.ui.base.TextFieldState
-import com.wuujcik.microbudget.ui.base.textFieldStateSaver
+import com.wuujcik.microbudget.util.TextFieldState
+import com.wuujcik.microbudget.util.textFieldStateSaver
 
 // PURPOSE OF SPENDING
 class PurposeState(

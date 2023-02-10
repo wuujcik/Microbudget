@@ -10,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.wuujcik.microbudget.R
-import com.wuujcik.microbudget.ui.base.TextFieldState
+import com.wuujcik.microbudget.util.TextFieldState
 import com.wuujcik.microbudget.ui.presentation.itemDetail.AmountState
 
 

@@ -21,7 +21,7 @@ class ItemDetailFragment : Fragment() {
 
     private val args: ItemDetailFragmentArgs by navArgs()
 
-    private val viewModel: ItemDetailViewModel by viewModel { parametersOf(args.item) } // TODO: allow editing
+    private val viewModel: ItemDetailViewModel by viewModel { parametersOf(args.item) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -14,7 +14,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.wuujcik.microbudget.R
-import com.wuujcik.microbudget.ui.base.TextFieldState
+import com.wuujcik.microbudget.util.TextFieldState
 import com.wuujcik.microbudget.ui.presentation.itemDetail.PurposeState
 
 

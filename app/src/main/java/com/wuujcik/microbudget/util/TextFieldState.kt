@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wuujcik.microbudget.ui.base
+package com.wuujcik.microbudget.util
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.wuujcik.data.entities.Currency
 import com.wuujcik.data.entities.Spending
 import com.wuujcik.microbudget.R
-import com.wuujcik.microbudget.ui.base.TextFieldState
+import com.wuujcik.microbudget.util.TextFieldState
 import com.wuujcik.microbudget.ui.presentation.itemDetail.*
 import com.wuujcik.microbudget.ui.theme.MicroBudgetTheme
 import java.time.ZonedDateTime
@@ -52,7 +52,7 @@ fun ItemDetailWidget(
                         mutableStateOf(PurposeState(originalText = originalItem?.purpose))
                     }
                     val amountState by rememberSaveable(stateSaver = AmountStateSaver) {
-                        mutableStateOf(AmountState(originalText = originalItem?.amount.toString()))
+                        mutableStateOf(AmountState(originalText = originalItem?.amount?.toString()))
                     }
 
                     Spacer(modifier = Modifier.height(12.dp))
