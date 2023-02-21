@@ -7,4 +7,8 @@
     <string name="details">Details</string>
     <string name="save">Save</string>
     <string name="empty_list_of_spendings">No spendings so far…</string>
+    <string name="list_app_bar">Your spendings</string>
+    <string name="menu_add">Add</string>
+    <string name="menu_delete_all">Delete all</string>
+    <string name="menu_about">About</string>
 </resources>

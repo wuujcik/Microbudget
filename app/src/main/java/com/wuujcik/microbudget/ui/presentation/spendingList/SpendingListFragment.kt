@@ -52,6 +52,12 @@ class SpendingListFragment : Fragment() {
                                 is SpendingListEvent.Delete -> {
                                     viewModel.deleteOne(event.spending)
                                 }
+                                SpendingListEvent.DeleteAll -> {
+                                    viewModel.deleteAll()
+                                }
+                                SpendingListEvent.ShowAbout -> {
+                                    //TODO: show dialog
+                                }
                             }
                         },
                         onClick = { viewModel.edit(it) },

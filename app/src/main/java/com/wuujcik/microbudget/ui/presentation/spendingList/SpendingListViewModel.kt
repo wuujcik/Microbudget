@@ -51,7 +51,7 @@ class SpendingListViewModel(
         spendingsRepository.deleteOne(spending)
     }
 
-    fun deleteAll() = viewModelScope.launch { // TODO: allow deleting all
+    fun deleteAll() = viewModelScope.launch {
         spendingsRepository.deleteAll()
     }
 }
