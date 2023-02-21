@@ -48,12 +48,15 @@ class ItemDetailFragment : Fragment() {
                         originalItem = viewModel.originalItem,
                         onBackPressed = { activity?.onBackPressedDispatcher?.onBackPressed() },
                         onDateClicked = ::showDatePicker,
-                        onCurrencyClicked = {}, //TODO: allow changing the currency
+                        onCurrencyClicked = {
+                            viewModel.onCurrencyChanged(it)
+                        },
                         onSaveClicked = { spending ->
                             viewModel.onSaveClicked(spending)
                         },
                         currencies = viewModel.availableCurrencies,
-                        dateTime = viewModel.chosenDate
+                        dateTime = viewModel.chosenDate,
+                        chosenCurrency = viewModel.chosenCurrency,
                     )
                 }
             }

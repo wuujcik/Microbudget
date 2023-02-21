@@ -27,6 +27,10 @@ class ItemDetailViewModel(
     val chosenDate: ZonedDateTime
         get() = _chosenDate.value
 
+    private val _chosenCurrency = mutableStateOf<Currency>(originalItem?.currency ?: Currency.CZECH)
+    val chosenCurrency: Currency
+        get() = _chosenCurrency.value
+
     val availableCurrencies = Currency.values().toList()
 
     fun onSaveClicked(spending: Spending) = viewModelScope.launch {
@@ -36,5 +40,9 @@ class ItemDetailViewModel(
 
     fun onDateChosen(date: ZonedDateTime?) {
         _chosenDate.value = date ?: ZonedDateTime.now()
+    }
+
+    fun onCurrencyChanged(currency: Currency) {
+        _chosenCurrency.value = currency
     }
 }

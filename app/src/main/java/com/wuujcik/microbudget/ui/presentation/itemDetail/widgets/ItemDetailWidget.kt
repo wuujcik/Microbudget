@@ -31,7 +31,8 @@ fun ItemDetailWidget(
     onCurrencyClicked: (Currency) -> Unit = {},
     onSaveClicked: (spending: Spending) -> Unit = {},
     currencies: List<Currency>,
-    dateTime: ZonedDateTime
+    dateTime: ZonedDateTime,
+    chosenCurrency: Currency
 ) {
     MicroBudgetTheme {
         Scaffold(
@@ -66,7 +67,7 @@ fun ItemDetailWidget(
                         Spacer(modifier = Modifier.width(12.dp))
                         CurrencySpinner(
                             availableCurrencies = currencies,
-                            selectedItem = Currency.CZECH,
+                            selectedItem = chosenCurrency,
                             onItemSelected = onCurrencyClicked
                         )
                     }
@@ -78,7 +79,7 @@ fun ItemDetailWidget(
                             originalItem = originalItem,
                             purposeState = purposeState,
                             amountState = amountState,
-                            currency = Currency.CZECH,//TODO: allow choosing currency
+                            currency = chosenCurrency,
                             dateTime = dateTime,
                         ),
                         onSaveClicked = onSaveClicked,
@@ -99,7 +100,8 @@ fun ItemDetailWidget(
 fun PreviewItemDetailWidget() {
     ItemDetailWidget(
         currencies = Currency.values().toList(),
-        dateTime = ZonedDateTime.now()
+        dateTime = ZonedDateTime.now(),
+        chosenCurrency = Currency.CZECH
     )
 }
 
