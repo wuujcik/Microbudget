@@ -1,17 +1,25 @@
 package com.wuujcik.microbudget.ui.presentation.spendingList
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.wuujcik.microbudget.R
+import com.wuujcik.microbudget.ui.presentation.spendingList.widgets.AboutWidget
 import com.wuujcik.microbudget.ui.presentation.spendingList.widgets.ListOfSpendingWidget
 import com.wuujcik.microbudget.ui.presentation.spendingList.widgets.SpendingListEvent
 import com.wuujcik.microbudget.ui.theme.MicroBudgetTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class SpendingListFragment : Fragment() {
 
@@ -38,6 +46,13 @@ class SpendingListFragment : Fragment() {
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
             setContent {
+                var aboutPopupShown by remember { mutableStateOf(false) }
+                if (aboutPopupShown) {
+                    AboutWidget(
+                        onNameClicked = { openLinkedIn() },
+                        onDismiss = { aboutPopupShown = false })
+                }
+
                 MicroBudgetTheme {
                     ListOfSpendingWidget(
                         state = viewModel.state,
@@ -56,7 +71,7 @@ class SpendingListFragment : Fragment() {
                                     viewModel.deleteAll()
                                 }
                                 SpendingListEvent.ShowAbout -> {
-                                    //TODO: show dialog
+                                    aboutPopupShown = true
                                 }
                             }
                         },
@@ -66,5 +81,11 @@ class SpendingListFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun openLinkedIn() {
+        val browserIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_url_page)))
+        startActivity(browserIntent)
     }
 }

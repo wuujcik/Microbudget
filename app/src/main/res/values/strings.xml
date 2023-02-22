@@ -3,12 +3,21 @@
     <string name="content_description_add">Add new item</string>
     <string name="purpose_label">Purpose</string>
     <string name="amount_label">Amount</string>
+
     <string name="back">Back</string>
     <string name="details">Details</string>
     <string name="save">Save</string>
+    <string name="close">Close</string>
+
     <string name="empty_list_of_spendings">No spendings so far…</string>
     <string name="list_app_bar">Your spendings</string>
     <string name="menu_add">Add</string>
     <string name="menu_delete_all">Delete all</string>
     <string name="menu_about">About</string>
+
+    <string name="about_main">Save info about your spending, so you never struggle to remember what you used your cash for!</string>
+    <string name="about_details">App created for testing Jetpack Compose.</string>
+    <string name="about_author">author:</string>
+    <string name="about_author_name">Aleksandra Wójcikowska</string>
+    <string name="about_url_page">https://www.linkedin.com/in/aleksandra-wojcikowska/</string>
 </resources>
