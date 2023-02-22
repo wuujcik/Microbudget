@@ -20,7 +20,6 @@ import java.time.ZonedDateTime
 fun ItemCardWidget(
     spending: Spending,
     onClick: ((Spending) -> Unit),
-    onLongPress: ((Spending) -> Unit),
 ) {
     Row(
         modifier = Modifier
@@ -29,7 +28,6 @@ fun ItemCardWidget(
             .pointerInput(Unit) {
                 detectTapGestures(
                     onLongPress = {
-                        onLongPress(spending)
                     },
                     onTap = {
                         onClick(spending)
@@ -83,7 +81,6 @@ fun PreviewItemCardWidget() {
                 currency = Currency.CZECH
             ),
             onClick = {},
-            onLongPress = {}
         )
     }
 }

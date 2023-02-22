@@ -76,7 +76,6 @@ class SpendingListFragment : Fragment() {
                             }
                         },
                         onClick = { viewModel.edit(it) },
-                        onLongPress = { viewModel.deleteOne(it) } //TODO: make it more obvious for the user that this is deleting
                     )
                 }
             }
