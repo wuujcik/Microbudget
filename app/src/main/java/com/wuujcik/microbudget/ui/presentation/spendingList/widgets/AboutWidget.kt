@@ -3,6 +3,7 @@ package com.wuujcik.microbudget.ui.presentation.spendingList.widgets
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -15,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
+import com.wuujcik.microbudget.BuildConfig
 import com.wuujcik.microbudget.R
 import com.wuujcik.microbudget.ui.theme.MicroBudgetTheme
 
@@ -56,6 +58,18 @@ fun AboutWidget(onNameClicked: () -> Unit, onDismiss: () -> Unit) {
                         modifier = Modifier.clickable(true) {
                             onNameClicked()
                         }
+                    )
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                Row {
+                    Text(
+                        text = stringResource(id = R.string.about_version),
+                        style = MaterialTheme.typography.labelSmall
+                    )
+                    Spacer(modifier = Modifier.width(2.dp))
+                    Text(
+                        text = BuildConfig.VERSION_NAME,
+                        style = MaterialTheme.typography.labelSmall
                     )
                 }
             }
