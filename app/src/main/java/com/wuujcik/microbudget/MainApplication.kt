@@ -2,6 +2,7 @@ package com.wuujcik.microbudget
 
 import android.app.Application
 import com.wuujcik.microbudget.di.*
+import org.koin.android.BuildConfig//wrong one, but temporarily needs to stay
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

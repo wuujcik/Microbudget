@@ -2,12 +2,12 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
-    id 'kotlin-kapt'
+    id("com.google.devtools.ksp") version "2.0.20-1.0.25"
 }
 
 android {
     namespace 'com.wuujcik.data'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 26
@@ -24,20 +24,18 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+
+    kotlin.jvmToolchain(17)
 }
 
 dependencies {
     def moshiVersion = "1.13.0"
     api "com.squareup.moshi:moshi-kotlin:$moshiVersion"
-    annotationProcessor "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    ksp "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
-    def xRoomVersion = "2.5.0"
     api "androidx.room:room-ktx:$xRoomVersion"
-    kapt "androidx.room:room-compiler:$xRoomVersion"
+    ksp("androidx.room:room-compiler:$xRoomVersion")
 }

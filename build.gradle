@@ -1,11 +1,12 @@
 buildscript {
     ext {
-        compose_ui_version = '1.3.3'
-        kotlin_version = "1.8.0"
+        compose_ui_version = '1.7.5'
+        kotlin_version = "2.0.20"
         navigationVersion = "2.5.3"
+        xRoomVersion = "2.6.1"
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:$kotlin_version")
+        classpath('com.android.tools.build:gradle:8.7.2')
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
     }
@@ -13,5 +14,5 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.3.1' apply false
     id 'com.android.library' version '7.3.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
+    id 'org.jetbrains.kotlin.android' version '2.0.20' apply false
 }

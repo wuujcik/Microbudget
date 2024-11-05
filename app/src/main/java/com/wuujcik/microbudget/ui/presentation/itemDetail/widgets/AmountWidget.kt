@@ -37,7 +37,7 @@ fun AmountWidget(amountState: TextFieldState = remember { AmountState() }) {
         isError = amountState.showErrors(),
         keyboardOptions = KeyboardOptions.Default.copy(
             imeAction = ImeAction.Next,
-            keyboardType = KeyboardType.Decimal
+            keyboardType = KeyboardType.Number
         ),
         colors = TextFieldDefaults.textFieldColors(
             containerColor = MaterialTheme.colorScheme.surface,
