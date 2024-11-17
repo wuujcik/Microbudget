@@ -2,7 +2,6 @@ package com.wuujcik.microbudget
 
 import android.app.Application
 import com.wuujcik.microbudget.di.*
-import org.koin.android.BuildConfig//wrong one, but temporarily needs to stay
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -12,17 +11,20 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        app = this
         startKoin {
             androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@MainApplication)
             modules(
-                daoModule,
-                databaseModule,
-                viewModelModule,
-                repositoryModule,
-                dataManagerModule,
-                interactorModule,
+                viewModelsModule,
+                dataModule,
+                dispatcherModule
             )
         }
+    }
+
+    companion object {
+        private var app: MainApplication? = null
+        fun app() = checkNotNull(app) { "App not initialized" }
     }
 }

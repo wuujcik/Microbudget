@@ -16,7 +16,7 @@
     <string name="menu_about">About</string>
     <string name="delete_icon_description">Delete item</string>
 
-    <string name="about_main">Save info about your spending, so you never struggle to remember what you used your cash for!</string>
+    <string name="about_main">Budgeting app</string>
     <string name="about_details">App created for testing Jetpack Compose.</string>
     <string name="about_author">author:</string>
     <string name="about_author_name">Aleksandra Wójcikowska</string>

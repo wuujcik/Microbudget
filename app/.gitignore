@@ -1,1 +1,51 @@
+# built application files
+*.apk
+*.ap_
+.externalNativeBuild
+*.aab
+
+# files for the VM
+*.dex
+.cxx
+
+# Java class files
+*.class
+
+# generated files
 /build
+.idea/*
+!.idea/localizerSettings.xml
+!.idea/mvpAddSettings.xml
+!.idea/codeStyles
+!.idea/copyright
+.gradle/
+/captures
+
+# iml files
+*.iml
+
+# local configuration file (sdk path, etc)
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# linux files
+.directory
+*.*~
+
+# mac files
+.DS_Store
+
+# windows files
+Thumbs.db
+thumbs.db
+
+# secret files
+/keystore
+
+# private folder
+/private
