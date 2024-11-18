@@ -19,6 +19,7 @@ import com.wuujcik.microbudget.util.TextFieldState
 fun EditableTextField(
     textState: TextFieldState,
     label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
     modifier: Modifier = Modifier
 ) {
     TextField(
@@ -39,16 +40,13 @@ fun EditableTextField(
         isError = textState.showErrors(),
         keyboardOptions = KeyboardOptions.Default.copy(
             imeAction = ImeAction.Next,
-            keyboardType = KeyboardType.Text
+            keyboardType = keyboardType
         ),
         colors = TextFieldDefaults.colors().copy(
             focusedTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.87f),
             focusedContainerColor = MaterialTheme.colorScheme.surface,
             unfocusedContainerColor = MaterialTheme.colorScheme.surface,
             cursorColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.87f),
-//            focusedBorderColor = Color.Transparent,
-//            unfocusedBorderColor = Color.Transparent,
-//            disabledBorderColor = Color.Transparent,
         ),
     )
 }

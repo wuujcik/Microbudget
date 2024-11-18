@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
@@ -207,6 +208,7 @@ fun TransactionDetailScreenContent(
                 EditableTextField(
                     textState = amountState,
                     label = stringResource(id = R.string.amount_label),
+                    keyboardType = KeyboardType.Number,
                     modifier = Modifier
                         .weight(1f)
                         .onFocusChanged { focusState ->
