@@ -6,6 +6,7 @@ import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.Build
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Icon
@@ -24,7 +25,8 @@ fun ActionsDropDownMenu(
     dismissMenu: () -> Unit,
     onCreateNewClicked: () -> Unit,
     onDeleteAllClicked: () -> Unit,
-    showAboutClicked: () -> Unit
+    showAboutClicked: () -> Unit,
+    showOldSpendings: () -> Unit
 ) {
     DropdownMenu(
         expanded = showMenu,
@@ -79,6 +81,25 @@ fun ActionsDropDownMenu(
             )
             Text(
                 text = stringResource(id = R.string.menu_about),
+                modifier = Modifier.padding(start = 8.dp),
+                textAlign = TextAlign.Left,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+        }
+
+        DropdownMenuItem(
+            onClick = {
+                showOldSpendings()
+                dismissMenu()
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Build,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurface,
+            )
+            Text(
+                text = "Show old data",
                 modifier = Modifier.padding(start = 8.dp),
                 textAlign = TextAlign.Left,
                 color = MaterialTheme.colorScheme.onSurface,

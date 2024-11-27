@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.serialization)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -14,8 +15,8 @@ android {
         applicationId = "com.wuujcik.microbudget"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1020000
-        versionName = "1.2.0"
+        versionCode = 1020100
+        versionName = "1.2.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -77,6 +78,7 @@ dependencies {
     implementation(libs.kotlinx.dateTime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
+
     //NAVIGATION
     implementation(libs.navigation.ui)
     implementation(libs.raamcosta.destinations.core)

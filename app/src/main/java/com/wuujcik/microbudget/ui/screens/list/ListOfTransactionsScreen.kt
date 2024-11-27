@@ -62,6 +62,7 @@ import com.wuujcik.microbudget.data.entities.Transaction
 import com.wuujcik.microbudget.ui.composables.ActionsDropDownMenu
 import com.wuujcik.microbudget.ui.composables.TransactionItem
 import com.wuujcik.microbudget.ui.dialogs.AboutDialog
+import com.wuujcik.microbudget.ui.dialogs.ShowOldSpendingsDialog
 import com.wuujcik.microbudget.ui.screens.detail.TransactionDetailScreenArguments
 import com.wuujcik.microbudget.ui.theme.MicroBudgetTheme
 import org.koin.androidx.compose.koinViewModel
@@ -80,6 +81,16 @@ fun ListOfTransactionsScreen(
         AboutDialog(
             onNameClicked = { openLinkedIn(context) },
             onDismiss = { aboutDialogVisible = false })
+    }
+
+    var showOldSpendingsDialogVisible  by remember { mutableStateOf(false) }
+    if (showOldSpendingsDialogVisible) {
+        ShowOldSpendingsDialog(
+            oldSpendings = viewModel.oldSpendings.collectAsState(
+                initial = emptyList(),
+                context = EmptyCoroutineContext
+            ).value,
+            onDismiss = { showOldSpendingsDialogVisible = false })
     }
 
     ListOfTransactionsContent(
@@ -105,7 +116,8 @@ fun ListOfTransactionsScreen(
         },
         onDeleteRequested = { viewModel.deleteItem(it) },
         showAboutClicked = { aboutDialogVisible = true },
-        onDeleteAllClicked = { viewModel.deleteAllTransactions() }
+        onDeleteAllClicked = { viewModel.deleteAllTransactions() },
+        showOldSpendings = { showOldSpendingsDialogVisible = true}
     )
 }
 
@@ -117,6 +129,7 @@ fun ListOfTransactionsContent(
     onCreateNewClicked: () -> Unit,
     onDeleteAllClicked: () -> Unit,
     showAboutClicked: () -> Unit,
+    showOldSpendings: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -147,7 +160,8 @@ fun ListOfTransactionsContent(
                         dismissMenu = { showMenu = false },
                         onCreateNewClicked = onCreateNewClicked,
                         onDeleteAllClicked = onDeleteAllClicked,
-                        showAboutClicked = showAboutClicked
+                        showAboutClicked = showAboutClicked,
+                        showOldSpendings = showOldSpendings
                     )
                 }
             )
@@ -271,7 +285,8 @@ private fun ListOfTransactionsPreview() {
             onCreateNewClicked = {},
             onDeleteRequested = {},
             showAboutClicked = {},
-            onDeleteAllClicked = {}
+            onDeleteAllClicked = {},
+            showOldSpendings = {}
         )
     }
 }

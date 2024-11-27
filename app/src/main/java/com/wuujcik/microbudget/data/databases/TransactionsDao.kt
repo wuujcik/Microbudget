@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.wuujcik.microbudget.data.entities.Currency
+import com.wuujcik.microbudget.data.entities.Spending
 import com.wuujcik.microbudget.data.entities.Transaction
 import kotlinx.coroutines.flow.Flow
 
@@ -29,5 +30,14 @@ interface TransactionsDao {
     suspend fun deleteOneById(id: Int)
 
     @Query("DELETE FROM ${Transaction.TABLE_NAME}")
+    suspend fun deleteAll()
+}
+
+@Dao
+interface SpendingsDao{
+    @Query("SELECT * FROM ${Spending.TABLE_NAME}")
+    fun getAll(): Flow<List<Spending>>
+
+    @Query("DELETE FROM ${Spending.TABLE_NAME}")
     suspend fun deleteAll()
 }
